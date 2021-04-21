@@ -1,0 +1,35 @@
+create entities
+
+CD cd = hey jpa plz give me a cd with id 3;
+CD cd = find(CD.class,4 <- id number)
+
+--------
+
+To use entity manager you need dependencies for Hibernate or another ORM
+Core Hibernate O/RM Functionality <- dependency
+mysql connector/J <- dependency
+
+-------
+
+EntityManagerFactory emf = Persistance.createEntityManagerFactory(""<- this is the persistance unit name);
+EntityManager em = emf.createEntityManagerFactory();
+
+CD cd = find(CD.class,4 <- id number)
+
+--------
+resources/META-INF.persistance.xml
+
+persistance unit = driver, url, user, password
+driver = com.mysql.jdbc.
+
+-----
+
+to save
+em.getTransaction().begin()
+em.persist()
+em.getTransaction().commit()
+
+to fetch
+em.find()
+
+----------
