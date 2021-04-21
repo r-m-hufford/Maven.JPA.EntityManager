@@ -7,7 +7,8 @@ import java.util.Set;
 @Entity
 public class CD {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private Long id;
     private String title;
     private String description;
@@ -63,5 +64,17 @@ public class CD {
 
     public void setArtists(Set<Artist> artists) {
         this.artists = artists;
+    }
+
+    @Override
+    public String toString() {
+        return "CD{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", year=" + year +
+                ", artists=" + artists +
+                ", price=" + price +
+                '}';
     }
 }

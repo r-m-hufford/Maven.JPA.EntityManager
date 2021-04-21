@@ -54,5 +54,14 @@ public class ArtistService {
     }
 
 
+    public boolean delete(Long id) {
+        em.getTransaction().begin();
+        em.remove(findById(id));
+        em.getTransaction().commit();
+
+        return true;
+    }
+
+
 
 }

@@ -32,6 +32,8 @@ public class ArtistServiceTest {
 
     @Test
     public void findAll() {
+
+        System.out.println(artistService.findAll());
     }
 
     @Test
@@ -61,6 +63,14 @@ public class ArtistServiceTest {
         String actual = artistService.findById(11L).getFirstName();
 
         Assert.assertEquals(actual, expected);
+    }
+
+    @Test
+    public void deleteTest() {
+
+        artistService.delete(12L);
+
+        Assert.assertEquals(null, artistService.findById(11L));
     }
 
 }
