@@ -31,7 +31,27 @@ public class ArtistService {
         return allQuery.getResultList();
     }
 
+    public boolean update(Long id, Artist artist) {
+        Artist revise = em.find(Artist.class, id);
 
+        revise.setFirstName(artist.getFirstName());
+        revise.setLastName(artist.getLastName());
+        revise.setInstrument(artist.getInstrument());
+
+        em.getTransaction().begin();
+        em.persist(revise);
+        em.getTransaction().commit();
+
+        return true;
+    }
+
+    public boolean create(Artist artist) {
+        em.getTransaction().begin();
+        em.persist(artist);
+        em.getTransaction().commit();
+
+        return true;
+    }
 
 
 

@@ -21,8 +21,8 @@ public class ArtistServiceTest {
         Artist artist = new Artist();
 
         //when
-        artist.setFirstName("Ryan");
-        artist.setLastName("Hufford");
+        artist.setFirstName("ryan");
+        artist.setLastName("hufford");
 
         Artist actual = artistService.findById(2L);
 
@@ -33,4 +33,34 @@ public class ArtistServiceTest {
     @Test
     public void findAll() {
     }
+
+    @Test
+    public void updateTest() {
+
+        Artist artist = new Artist();
+        artist.setFirstName("Sam");
+        artist.setLastName("Samuel");
+
+        artistService.update(10L, artist);
+        String expected = "Sam";
+        String actual = artistService.findById(10l).getFirstName();
+
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void createTest() {
+        Artist artist = new Artist();
+        artist.setFirstName("Bo");
+        artist.setLastName("Jangles");
+        artist.setInstrument("vocals");
+
+        artistService.create(artist);
+        String expected = "Bo";
+        String actual = artistService.findById(11L).getFirstName();
+
+        Assert.assertEquals(actual, expected);
+    }
+
 }
